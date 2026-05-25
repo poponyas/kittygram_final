@@ -11,7 +11,7 @@ services:
       - pg_data:/var/lib/postgresql/data
 
   backend:
-    build: ./backend/
+    image: ${DOCKER_USERNAME}/kittygram_backend:latest
     env_file: .env
     depends_on:
       - db
@@ -20,13 +20,15 @@ services:
       - media:/app/media
 
   frontend:
-    build: ./frontend/
+    image: ${DOCKER_USERNAME}/kittygram_frontend:latest
+    env_file: .env
     command: cp -r /app/build/. /static/
     volumes:
       - static:/static
 
   gateway:
-    build: ./nginx/
+    image: ${DOCKER_USERNAME}/kittygram_gateway:latest
+    env_file: .env
     ports:
       - 9000:80
     depends_on:

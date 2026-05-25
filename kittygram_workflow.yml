@@ -26,7 +26,6 @@ jobs:
       - name: Lint with ruff
         run: ruff check backend/
 
-      # Запуск тестов бэкенда Django
       - name: Run backend tests
         run: |
           cd backend/
@@ -37,7 +36,6 @@ jobs:
         with:
           node-version: 18
 
-      # Запуск тестов фронтенда
       - name: Run frontend tests
         run: |
           cd frontend/
